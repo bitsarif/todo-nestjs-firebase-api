@@ -30,20 +30,19 @@ This is a simple CRUD API for a Todo application using NestJS and Firebase Realt
    - Click on the gear icon in the top left corner and select "Project settings".
    - Scroll down to the "Firebase SDK snippet" section and select "Config".
    - Copy the configuration object.
-4. Add your Firebase configuration to `src/firebase/firebase.service.ts`:
+4. Follow the firebase_service_account copy.json.sample file
+5. Add your Firebase configuration to `src/firebase/firebase.service.ts`:
    ```typescript
    import * as admin from 'firebase-admin';
 
-   const config = {
-     // Paste your Firebase configuration object here
-   };
+   const serviceAccount = require('../../firebase_service_account.json');
 
    admin.initializeApp({
-     credential: admin.credential.cert(config),
+     credential: admin.credential.cert(serviceAccount),
      databaseURL: 'https://<your-project-id>.firebaseio.com',
    });
    ```
-5. Run `npm run start` to start the application.
+6. Run `npm run start` to start the application.
 
 ## Usage
 
